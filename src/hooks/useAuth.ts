@@ -36,7 +36,7 @@ export const useAuth = () => {
       }
     };
     getInitialSession();
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
       setAuthState({ user: session?.user ?? null, session, loading: false, error: null });
     });
     return () => subscription.unsubscribe();
